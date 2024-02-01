@@ -4,12 +4,12 @@ import HomeScreen from "./screens/HomeScreen";
 import React from "react";
 import ChatScreen from "./screens/ChatScreen";
 import LoginScreen from "./screens/LoginScreen";
-import AuthProvider from "./hooks/useAuth";
+import useAuth, { AuthProvider } from "./hooks/useAuth";
 
 const Stack = createStackNavigator();
 
 const App = () => {
-  const user = true;
+  const { user } = useAuth();
   return (
     <NavigationContainer>
       <AuthProvider>

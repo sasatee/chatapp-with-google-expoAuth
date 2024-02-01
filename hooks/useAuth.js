@@ -1,10 +1,7 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { createContext, useContext } from "react";
 
-const AuthContext = createContext({
-  //initial state
-});
+const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   return (
