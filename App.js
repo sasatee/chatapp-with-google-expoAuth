@@ -1,28 +1,17 @@
-import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
-import HomeScreen from "./screens/HomeScreen";
+import "expo-dev-client";
 import React from "react";
-import ChatScreen from "./screens/ChatScreen";
-import LoginScreen from "./screens/LoginScreen";
-import useAuth, { AuthProvider } from "./hooks/useAuth";
-
-const Stack = createStackNavigator();
+import { NavigationContainer } from "@react-navigation/native";
+import { AuthProvider } from "./hooks/useAuth";
+import StackNavigator from "./StackNavigator";
 
 const App = () => {
-  const { user } = useAuth();
   return (
     <NavigationContainer>
+      {/* high order component : wrapping the children component within */}
+
       <AuthProvider>
-        <Stack.Navigator>
-          {user ? (
-            <>
-              <Stack.Screen name="Home" component={HomeScreen} />
-              <Stack.Screen name="Chat" component={ChatScreen} />
-            </>
-          ) : (
-            <Stack.Screen name="Login" component={LoginScreen} />
-          )}
-        </Stack.Navigator>
+        {/* passes down information to children */}
+        <StackNavigator />
       </AuthProvider>
     </NavigationContainer>
   );
